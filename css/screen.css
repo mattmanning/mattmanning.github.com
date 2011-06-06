@@ -55,6 +55,15 @@ body {
   margin: auto;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 header {
   position: relative;
   height: 3em;
@@ -69,12 +78,7 @@ header h1 {
 }
 
 header h1 a{
-  color: black;
   font-size: 1.8em;
-}
-
-header a {
-  text-decoration: none;
 }
 
 nav {
@@ -89,4 +93,11 @@ nav a {
 
 div#content {
   clear: both;
+}
+
+footer {
+  border-top: 3px double black;
+  margin-top: 10px;
+  padding-top: 10px;
+  text-align: center;
 }
