@@ -2,9 +2,23 @@
 <html>
 <head>
   <meta charset=utf-8 />
-  <title>{{ page.title }}</title>
+  <link rel='stylesheet' href='css/screen.css' />
+  <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+  <title>Matthew Manning - {{ page.title }}</title>
 </head>
 <body>
-  {{ content }}
+  <header>
+    <h1><a href='#'>matthew manning</a></h1>
+    <nav>
+        <a href='#'>blog</a>
+        -
+        <a href='#'>projects</a>
+    </nav>
+  </header>
+  <div id='content'>
+    {{ content }}
+  </div>
+  <footer>
+  </footer>
 </body>
 </html>
