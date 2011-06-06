@@ -75,10 +75,7 @@ header h1 {
   position: absolute;
   left: 0;
   bottom: 10px;
-}
-
-header h1 a{
-  font-size: 1.8em;
+  font-size: 1.4em;
 }
 
 nav {
