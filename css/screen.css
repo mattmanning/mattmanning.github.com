@@ -95,6 +95,15 @@ div#content {
   clear: both;
 }
 
+div#contact {
+  text-align: center;
+}
+
+div#contact p {
+  margin: 10px;
+  font-size: 1.2em;
+}
+
 footer {
   border-top: 3px double black;
   margin-top: 10px;
