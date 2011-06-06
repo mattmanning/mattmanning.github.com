@@ -67,7 +67,7 @@ a:hover {
 header {
   position: relative;
   height: 3em;
-  border-bottom: 3px double black;
+  border-bottom: 3px double #ccc;
   margin-bottom: 10px;
 }
 
@@ -96,7 +96,7 @@ div#content {
 }
 
 footer {
-  border-top: 3px double black;
+  border-top: 3px double #ccc;
   margin-top: 10px;
   padding-top: 10px;
   text-align: center;
