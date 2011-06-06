@@ -67,7 +67,7 @@ a:hover {
 header {
   position: relative;
   height: 3em;
-  border-bottom: 3px double black;
+  border-bottom: 3px double #ccc;
   margin-bottom: 10px;
 }
 
@@ -75,10 +75,7 @@ header h1 {
   position: absolute;
   left: 0;
   bottom: 10px;
-}
-
-header h1 a{
-  font-size: 1.8em;
+  font-size: 1.4em;
 }
 
 nav {
@@ -105,7 +102,7 @@ div#contact p {
 }
 
 footer {
-  border-top: 3px double black;
+  border-top: 3px double #ccc;
   margin-top: 10px;
   padding-top: 10px;
   text-align: center;
