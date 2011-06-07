@@ -113,8 +113,8 @@ nav {
   position: absolute;
   right: 0;
   bottom: 0px;
-  font-size: 16px;
   line-height: 36px;
+  font-size: 16px;
 }
 
 div#content {
@@ -123,9 +123,31 @@ div#content {
 
 article header {
   position: static;
+  height: 36px;
   border: none;
+}
+
+article header h1 {
+  position: static;
+  bottom: auto;
+  left: auto;
+  margin-bottom: 18px;
+  padding-bottom: auto;
+  line-height: 36px;
+  font-size: 24px;
+}
+
+article footer {
+  margin-top: auto;
+  border-top: none;
   height: auto;
-  font-size: 1.5em;
+  text-align: left;
+  line-height: 18px;
+}
+
+article time {
+  font-style: italic;
+  color: #888;
 }
 
 div#contact {
