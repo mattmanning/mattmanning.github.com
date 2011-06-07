@@ -137,6 +137,14 @@ article header h1 {
   font-size: 24px;
 }
 
+pre {
+  padding: 18px;
+  background-color: #444;
+  color: white;
+  font-family: Monaco, monospace;
+  margin-bottom: 18px;
+}
+
 article footer {
   margin-top: auto;
   border-top: none;
