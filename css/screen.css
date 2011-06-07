@@ -92,6 +92,17 @@ div#content {
   clear: both;
 }
 
+article header {
+  position: static;
+  border: none;
+  height: auto;
+  font-size: 1.5em;
+}
+
+article p {
+  margin-bottom: 10px;
+}
+
 div#contact {
   text-align: center;
 }
