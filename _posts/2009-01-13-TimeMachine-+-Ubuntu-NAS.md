@@ -8,6 +8,8 @@ At home, I have a computer running Ubuntu Linux that I use as a file/media/print
 
 A while back a little command that would let TimeMachine use network drive started floating around the Internet:
 
-defaults write com.apple.systempreferences TMShowUnsupportedNetworkVolumes 1
+{% highlight bash %}
+> defaults write com.apple.systempreferences TMShowUnsupportedNetworkVolumes 1
+{% endhighlight %}
 
 I already had SAMBA set up, but I had some problems, so I ended up following this tutorial — which I highly recommend — and setting up netatalk so I could share the volume over AFP.  Looking back, I don't think SAMBA was the problem, I think the issue was with creating the initial backup disk image. I had to make the image locally and copy it over, as is explained in the troubleshooting section, but after that everything worked perfectly.
