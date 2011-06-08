@@ -7,7 +7,7 @@ Bittorrent is an efficient, fault-tolerant way to distribute files across the In
 
 Wouldn’t it be nice if you had a remote Bittorrent client running on a reliable server somewhere? You could start a download any time from any computer, then pull down the file over a fast, reliable connection when it’s finished.  You could even be nice and seed the file for a few days, all the while using (or more importantly NOT using) your laptop as normal.
 
-Amazon’s new, cheap — or in limited cases free — “micro” EC2 instances make this a possibility.  Below you’ll find a step-by-step guide to set up your own remote bittorrent client using the Transmission application on an EC2 micro instance running Ubuntu.
+Amazon’s new, cheap — or in limited cases free — "micro" EC2 instances make this a possibility.  Below you’ll find a step-by-step guide to set up your own remote bittorrent client using the Transmission application on an EC2 micro instance running Ubuntu.
 
 Amazon Web Services
 -------------------
@@ -19,50 +19,50 @@ Creating and Booting an Instance
 
 Now that you’re all signed up, we need to create and boot an EC2 micro instance  to run our client.  EC2 instances are based on Amazon Machine Image (AMI) files.  For this guide, we’ll be using one of the official Ubuntu 10.4 LTS AMIs found here.  You should chose a 32-bit, EBS-based AMI from a region geographically close to you.  I chose ami-480df921.
 
-Once you have the ID of the AMI you want to use, create a new instance based on it.  Log into the AWS management console and click on the “Instances” link in the left navbar, then click the “Launch Instance” button.
+Once you have the ID of the AMI you want to use, create a new instance based on it.  Log into the AWS management console and click on the "Instances" link in the left navbar, then click the "Launch Instance" button.
 
 [<img src="/images/remotebt-launch.png" width="384" height="216" />](/images/remotebt-launch.png)
 
-Click the “Community Instances” tab in the wizard that pops up and paste your AMI ID into the search field. Click the “Select” button next the the search result for your image.
+Click the "Community Instances" tab in the wizard that pops up and paste your AMI ID into the search field. Click the "Select" button next the the search result for your image.
 
 [<img src="/images/remotebt-ami.png" width="692" height="198" />](/images/remotebt-ami.png)
 
-Change the “Instance Type” to “Micro (t1.micro, 613 MB) and click “Continue.”
+Change the "Instance Type" to "Micro (t1.micro, 613 MB) and click "Continue."
 
 [<img src="/images/remotebt-micro.png" width="698" height="468" />](/images/remotebt-micro.png)
 
-Click “Continue” on the next screen to use the default Kernel ID and RAM Disk ID.
+Click "Continue" on the next screen to use the default Kernel ID and RAM Disk ID.
 
 [<img src="/images/remotebt-kernel.png" width="694" height="468" />](/images/remotebt-kernel.png)
 
-On the next screen, give your instance a name.  I called mine “Remote Bittorrent.” Click “Continue.”
+On the next screen, give your instance a name.  I called mine "Remote Bittorrent." Click "Continue."
 
 [<img src="/images/remotebt-name.png" width="694" height="468" />](/images/remotebt-name.png)
 
-If you don’t already have a key pair set up, click the “Create New Key Pair” radio button and follow the directions to create a new key pair.
+If you don’t already have a key pair set up, click the "Create New Key Pair" radio button and follow the directions to create a new key pair.
 
 [<img src="/images/remotebt-keypair.png" width="686" height="342" />](/images/remotebt-keypair.png)
 
-On the next screen, click the “Create a New Security Group” radio button.  Here we will open port 22 so we can SSH into the server for administration.  Add an entry for SSH by choosing it from the select in the “Application” column and clicking the “Add Rule” button. Click “Continue.”
+On the next screen, click the "Create a New Security Group" radio button.  Here we will open port 22 so we can SSH into the server for administration.  Add an entry for SSH by choosing it from the select in the "Application" column and clicking the "Add Rule" button. Click "Continue."
 
 [<img src="/images/remotebt-ssh.png" width="694" height="468" />](/images/remotebt-ssh.png)
 
-Finally click the “Launch” button to start your instance. It may take a few minutes to launch your instance for the first time.
+Finally click the "Launch" button to start your instance. It may take a few minutes to launch your instance for the first time.
 
 [<img src="/images/remotebt-launch2.png" width="688" height="468" />](/images/remotebt-launch2.png)
 
-Return to the management console and click “Security Groups” in the left navbar.  Click the name of the security group we just created; we need to a few more rules to it.
+Return to the management console and click "Security Groups" in the left navbar.  Click the name of the security group we just created; we need to a few more rules to it.
 
-First we’ll open port 9091, which is the port used by the Transmission web client.  To do this choose “Custom” from the “Connection Method” select box. Chose TCP as the Protocol, From Port and To Port should be 9091, and the source IP should be 0.0.0.0/0.  Click the “Add Rule” button.  If you don’t see the new rule in the list right away, click the “Refresh” button near the top of the page.
+First we’ll open port 9091, which is the port used by the Transmission web client.  To do this choose "Custom" from the "Connection Method" select box. Chose TCP as the Protocol, From Port and To Port should be 9091, and the source IP should be 0.0.0.0/0.  Click the "Add Rule" button.  If you don’t see the new rule in the list right away, click the "Refresh" button near the top of the page.
 
-Next we’ll open a range of ports for the actual bittorrent application to use.  Again chose “Custom” as the Connection Method, TCP as the Protocol, 49152 as the From Port, 65535 as the To Port, and 0.0.0.0/0 as the Source IP.  Click “Add Rule.”
+Next we’ll open a range of ports for the actual bittorrent application to use.  Again chose "Custom" as the Connection Method, TCP as the Protocol, 49152 as the From Port, 65535 as the To Port, and 0.0.0.0/0 as the Source IP.  Click "Add Rule."
 
 [<img src="/images/remotebt-security.png" width="774" height="252" />](/images/remotebt-security.png)
 
 Update/Installation
 -------------------
 
-Now we’ll connect to our new server and configure all of the software we’ll be using.  Click “Instances” in the left navbar.  Select your instance and select “Connect” under the “Instance Actions” select box.  Follow the directions to SSH into your server, but use the user “ubuntu” instead of “root”.
+Now we’ll connect to our new server and configure all of the software we’ll be using.  Click "Instances" in the left navbar.  Select your instance and select "Connect" under the "Instance Actions" select box.  Follow the directions to SSH into your server, but use the user "ubuntu" instead of "root".
 
 [<img src="/images/remotebt-connect.png" width="234" height="396" />](/images/remotebt-connect.png)
 
@@ -88,10 +88,10 @@ Open the settings.json config file with your favorite editor.
 
     ubuntu@ip-10-203-65-125:~$ sudo nano /etc/transmission-daemon/settings.json
 
-Save downloaded files in a more convenient place: “download-dir”: “/home/ubuntu/Downloads”
+Save downloaded files in a more convenient place: "download-dir": "/home/ubuntu/Downloads"
 
-Come up with a password to protect your server: “rpc-password”: “mysecretpassword”.  (Don’t worry. This password will be obscured to a hash once we restart the transmission-daemon.)
-Turn off the rpc-whitelist so we can access this client from any IP: “rpc-whitelist-enabled”: false,
+Come up with a password to protect your server: "rpc-password": "mysecretpassword".  (Don’t worry. This password will be obscured to a hash once we restart the transmission-daemon.)
+Turn off the rpc-whitelist so we can access this client from any IP: "rpc-whitelist-enabled": false,
 
 Now start transmission-daemon back up:
 
@@ -105,7 +105,7 @@ Finally, we need to create the /home/ubuntu/Downloads directory and give transmi
 
 And we’re done!
 
-Now point your browser at your instance on port 9091.  You can find the URL by clicking on your instance in the AWS management console and checking the value of the “Public DNS” field.  For my instance, the URL is http://ec2-184-72-148-12.compute-1.amazonaws.com:9091. You will be prompted to log in.  The username is “transmission” (unless you changed it in settings.json) and the password is whatever password you chose in settings.json.
+Now point your browser at your instance on port 9091.  You can find the URL by clicking on your instance in the AWS management console and checking the value of the "Public DNS" field.  For my instance, the URL is http://ec2-184-72-148-12.compute-1.amazonaws.com:9091. You will be prompted to log in.  The username is "transmission" (unless you changed it in settings.json) and the password is whatever password you chose in settings.json.
 
 [<img src="/images/remotebt-login.png" width="398" height="198" />](/images/remotebt-login.png)
 
