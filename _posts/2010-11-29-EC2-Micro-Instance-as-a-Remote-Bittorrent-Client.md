@@ -12,7 +12,7 @@ Amazon’s new, cheap — or in limited cases free — "micro" EC2 instances mak
 Amazon Web Services
 -------------------
 
-First you’ll need to create an Amazon Web Services (AWS) account.  If you already have an AWS account you can skip ahead to the server creation.  If not head on over to http://aws.amazon.com/free/ and sign up for an account and get your free Linux-based micro instance (this is what we’ll be using to run our client).
+First you’ll need to create an Amazon Web Services (AWS) account.  If you already have an AWS account you can skip ahead to the server creation.  If not head on over to [http://aws.amazon.com/free](http://aws.amazon.com/free/) and sign up for an account and get your free Linux-based micro instance (this is what we’ll be using to run our client).
 
 Creating and Booting an Instance
 --------------------------------
