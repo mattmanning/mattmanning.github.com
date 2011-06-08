@@ -2,7 +2,6 @@
 layout: posts
 title: EC2 Micro Instance as a Remote Bittorrent Client
 img_url: http://dl.dropbox.com/u/7098783/blog/images
-published: false
 ---
 Bittorrent is an efficient, fault-tolerant way to distribute files across the Internet.  When a file is popular, it can get shared really quickly as lots of users swarm to download and upload the file simultaneously.  When a file is less popular, however, it can take hours or even days to download because of a diminished number of seeders.  If you use a desktop computer that runs 24/7 and is always connected to a reliable Internet connection this is no problem, but if your primary machine is a laptop and especially if you use it on the go, slow torrents can turn into a problem.
 
@@ -11,10 +10,12 @@ Wouldn’t it be nice if you had a remote Bittorrent client running on a reliabl
 Amazon’s new, cheap — or in limited cases free — “micro” EC2 instances make this a possibility.  Below you’ll find a step-by-step guide to set up your own remote bittorrent client using the Transmission application on an EC2 micro instance running Ubuntu.
 
 Amazon Web Services
+-------------------
 
 First you’ll need to create an Amazon Web Services (AWS) account.  If you already have an AWS account you can skip ahead to the server creation.  If not head on over to http://aws.amazon.com/free/ and sign up for an account and get your free Linux-based micro instance (this is what we’ll be using to run our client).
 
 Creating and Booting an Instance
+--------------------------------
 
 Now that you’re all signed up, we need to create and boot an EC2 micro instance  to run our client.  EC2 instances are based on Amazon Machine Image (AMI) files.  For this guide, we’ll be using one of the official Ubuntu 10.4 LTS AMIs found here.  You should chose a 32-bit, EBS-based AMI from a region geographically close to you.  I chose ami-480df921.
 
@@ -59,6 +60,7 @@ Next we’ll open a range of ports for the actual bittorrent application to use.
 
 
 Update/Installation
+-------------------
 
 Now we’ll connect to our new server and configure all of the software we’ll be using.  Click “Instances” in the left navbar.  Select your instance and select “Connect” under the “Instance Actions” select box.  Follow the directions to SSH into your server, but use the user “ubuntu” instead of “root”.
 
@@ -80,6 +82,7 @@ Next, install the Transmission packages
 {% endhighlight %}
 
 Configuration
+-------------
 
 Now we want to stop transmission-daemon so we can edit its config.
 
@@ -125,16 +128,3 @@ Now you have a client that you can browse to at any time on any computer.  You c
 Amazon gets pretty decent download speeds too 
 
 
-
-Posted in tech | 6 Comments
-TimeMachine + Ubuntu NAS
-January 13th, 2009
-So after a few months of hem-hawing around, I finally implemented a respectable backup solution for my Mac.  It’s getting old enough (almost 4 years) that I’m starting to worry about random hardware failures, so having a reliable backup is very important.
-
-At home, I have a computer running Ubuntu Linux that I use as a file/media/print server.  It has four 250 GB drives in a RAID5 configuration.  Since RAID5 can be rebuilt if a drive dies, I feel like this is a pretty safe place to store backups, although eventually I hope to have an offsite backup (ex: Amazon S3) as well.
-
-A while back a little command that would let TimeMachine use network drive started floating around the Internet:
-
-defaults write com.apple.systempreferences TMShowUnsupportedNetworkVolumes 1
-
-I already had SAMBA set up, but I had some problems, so I ended up follwing this tutorial — which I highly recommend — and setting up netatalk so I could share the volume over AFP.  Looking back, I don’t think SAMBA was the problem, I think the issue was with creating the initial backup disk image. I had to make the image locally and copy it over, as is explained in the troubleshooting section, but after that everything worked perfectly.
