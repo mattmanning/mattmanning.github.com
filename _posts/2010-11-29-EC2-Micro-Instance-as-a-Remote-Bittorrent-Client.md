@@ -1,6 +1,7 @@
 ---
 layout: posts
 title: EC2 Micro Instance as a Remote Bittorrent Client
+img_url: http://dl.dropbox.com/u/7098783/blog/images
 published: false
 ---
 Bittorrent is an efficient, fault-tolerant way to distribute files across the Internet.  When a file is popular, it can get shared really quickly as lots of users swarm to download and upload the file simultaneously.  When a file is less popular, however, it can take hours or even days to download because of a diminished number of seeders.  If you use a desktop computer that runs 24/7 and is always connected to a reliable Internet connection this is no problem, but if your primary machine is a laptop and especially if you use it on the go, slow torrents can turn into a problem.
@@ -19,7 +20,7 @@ Now that you’re all signed up, we need to create and boot an EC2 micro instanc
 
 Once you have the ID of the AMI you want to use, create a new instance based on it.  Log into the AWS management console and click on the “Instances” link in the left navbar, then click the “Launch Instance” button.
 
-
+![alt text]({{ page.img_url }}/remotebt-launch.png "Title")
 
 Click the “Community Instances” tab in the wizard that pops up and paste your AMI ID into the search field. Click the “Select” button next the the search result for your image.
 
