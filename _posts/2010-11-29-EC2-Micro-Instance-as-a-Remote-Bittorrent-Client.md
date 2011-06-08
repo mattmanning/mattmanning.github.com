@@ -21,35 +21,35 @@ Now that you’re all signed up, we need to create and boot an EC2 micro instanc
 
 Once you have the ID of the AMI you want to use, create a new instance based on it.  Log into the AWS management console and click on the “Instances” link in the left navbar, then click the “Launch Instance” button.
 
-![alt text]({{ page.img_url }}/remotebt-launch.png "Title")
+[<img src="/images/remotebt-launch.png" width="384" height="216" />](/images/remotebt-launch.png)
 
 Click the “Community Instances” tab in the wizard that pops up and paste your AMI ID into the search field. Click the “Select” button next the the search result for your image.
 
-
+[<img src="/images/remotebt-ami.png" width="692" height="198" />](/images/remotebt-ami.png)
 
 Change the “Instance Type” to “Micro (t1.micro, 613 MB) and click “Continue.”
 
-
+[<img src="/images/remotebt-micro.png" width="698" height="468" />](/images/remotebt-micro.png)
 
 Click “Continue” on the next screen to use the default Kernel ID and RAM Disk ID.
 
-
+[<img src="/images/remotebt-kernel.png" width="694" height="468" />](/images/remotebt-kernel.png)
 
 On the next screen, give your instance a name.  I called mine “Remote Bittorrent.” Click “Continue.”
 
-
+[<img src="/images/remotebt-name.png" width="694" height="468" />](/images/remotebt-name.png)
 
 If you don’t already have a key pair set up, click the “Create New Key Pair” radio button and follow the directions to create a new key pair.
 
-
+[<img src="/images/remotebt-keypair.png" width="686" height="342" />](/images/remotebt-keypair.png)
 
 On the next screen, click the “Create a New Security Group” radio button.  Here we will open port 22 so we can SSH into the server for administration.  Add an entry for SSH by choosing it from the select in the “Application” column and clicking the “Add Rule” button. Click “Continue.”
 
-
+[<img src="/images/remotebt-ssh.png" width="694" height="468" />](/images/remotebt-ssh.png)
 
 Finally click the “Launch” button to start your instance. It may take a few minutes to launch your instance for the first time.
 
-
+[<img src="/images/remotebt-launch2.png" width="688" height="468" />](/images/remotebt-launch2.png)
 
 Return to the management console and click “Security Groups” in the left navbar.  Click the name of the security group we just created; we need to a few more rules to it.
 
@@ -57,12 +57,14 @@ First we’ll open port 9091, which is the port used by the Transmission web cli
 
 Next we’ll open a range of ports for the actual bittorrent application to use.  Again chose “Custom” as the Connection Method, TCP as the Protocol, 49152 as the From Port, 65535 as the To Port, and 0.0.0.0/0 as the Source IP.  Click “Add Rule.”
 
-
+[<img src="/images/remotebt-security.png" width="774" height="252" />](/images/remotebt-security.png)
 
 Update/Installation
 -------------------
 
 Now we’ll connect to our new server and configure all of the software we’ll be using.  Click “Instances” in the left navbar.  Select your instance and select “Connect” under the “Instance Actions” select box.  Follow the directions to SSH into your server, but use the user “ubuntu” instead of “root”.
+
+[<img src="/images/remotebt-connect.png" width="234" height="396" />](/images/remotebt-connect.png)
 
 {% highlight bash %}
   ssh -i bittorrent.pem ubuntu@ec2-184-72-148-12.compute-1.amazonaws.com
