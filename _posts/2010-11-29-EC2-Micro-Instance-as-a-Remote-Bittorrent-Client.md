@@ -121,12 +121,12 @@ And we’re done!
 
 Now point your browser at your instance on port 9091.  You can find the URL by clicking on your instance in the AWS management console and checking the value of the “Public DNS” field.  For my instance, the URL is http://ec2-184-72-148-12.compute-1.amazonaws.com:9091. You will be prompted to log in.  The username is “transmission” (unless you changed it in settings.json) and the password is whatever password you chose in settings.json.
 
-
+[<img src="/images/remotebt-login.png" width="398" height="198" />](/images/remotebt-login.png)
 
 Now you have a client that you can browse to at any time on any computer.  You can upload torrent files directly, or you can simply enter the URL of the torrent file and have the client do the rest.
 
+[<img src="/images/remotebt-dl.png" width="436" height="216" />](/images/remotebt-dl.png)
 
+Amazon gets pretty decent download speeds too :)
 
-Amazon gets pretty decent download speeds too 
-
-
+[<img src="/images/remotebt-speed.png" width="785" height="162" />](/images/remotebt-speed.png)
