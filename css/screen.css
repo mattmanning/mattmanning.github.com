@@ -137,6 +137,10 @@ article header h1 {
   font-size: 24px;
 }
 
+article p a {
+  color: blue;
+}
+
 article img {
   display: block;
   margin-left: auto;
