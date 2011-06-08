@@ -66,37 +66,27 @@ Now we’ll connect to our new server and configure all of the software we’ll 
 
 [<img src="/images/remotebt-connect.png" width="234" height="396" />](/images/remotebt-connect.png)
 
-{% highlight bash %}
   ssh -i bittorrent.pem ubuntu@ec2-184-72-148-12.compute-1.amazonaws.com
-{% endhighlight %}
 
 Now we’ll upgrade all of the installed packages.  Issue the following commands:
 
-{% highlight bash %}
-  ubuntu@ip-10-203-65-125:~$ sudo aptitude update
-  ubuntu@ip-10-203-65-125:~$ sudo aptitude upgrade
-{% endhighlight %}
+    ubuntu@ip-10-203-65-125:~$ sudo aptitude update
+    ubuntu@ip-10-203-65-125:~$ sudo aptitude upgrade
 
 Next, install the Transmission packages
 
-{% highlight bash %}
-  ubuntu@ip-10-203-65-125:~$ sudo aptitude install transmission-cli transmission-daemon
-{% endhighlight %}
+    ubuntu@ip-10-203-65-125:~$ sudo aptitude install transmission-cli transmission-daemon
 
 Configuration
 -------------
 
 Now we want to stop transmission-daemon so we can edit its config.
 
-{% highlight bash %}
-  ubuntu@ip-10-203-65-125:~$ sudo /etc/init.d/transmission-daemon stop
-{% endhighlight %}
+    ubuntu@ip-10-203-65-125:~$ sudo /etc/init.d/transmission-daemon stop
 
 Open the settings.json config file with your favorite editor.
 
-{% highlight bash %}
-  ubuntu@ip-10-203-65-125:~$ sudo nano /etc/transmission-daemon/settings.json
-{% endhighlight %}
+    ubuntu@ip-10-203-65-125:~$ sudo nano /etc/transmission-daemon/settings.json
 
 Save downloaded files in a more convenient place: “download-dir”: “/home/ubuntu/Downloads”
 
@@ -105,17 +95,13 @@ Turn off the rpc-whitelist so we can access this client from any IP: “rpc-whit
 
 Now start transmission-daemon back up:
 
-{% highlight bash %}
-  ubuntu@ip-10-203-65-125:~$ sudo /etc/init.d/transmission-daemon start
-{% endhighlight %}
+    ubuntu@ip-10-203-65-125:~$ sudo /etc/init.d/transmission-daemon start
 
 Finally, we need to create the /home/ubuntu/Downloads directory and give transmission-daemon the ability to write to it.
 
-{% highlight bash %}
-  ubuntu@ip-10-203-65-125:~$ mkdir /home/ubuntu/Downloads/
-  ubuntu@ip-10-203-65-125:~$ chown ubuntu:debian-transmission /home/ubuntu/Downloads/
-  ubuntu@ip-10-203-65-125:~$ sudo chmod g+w /home/ubuntu/Downloads/
-{% endhighlight %}
+    ubuntu@ip-10-203-65-125:~$ mkdir /home/ubuntu/Downloads/
+    ubuntu@ip-10-203-65-125:~$ chown ubuntu:debian-transmission /home/ubuntu/Downloads/
+    ubuntu@ip-10-203-65-125:~$ sudo chmod g+w /home/ubuntu/Downloads/
 
 And we’re done!
 
