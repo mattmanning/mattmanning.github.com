@@ -1,7 +1,10 @@
 ---
 layout: projects
-title: Chaos Video
+title: projects - Chaos Video
 ---
+
+Chaos Video
+===========
 
 This video won 3rd place at the 2002 Georgia Tech iMovie Fest when we were freshmen. We used the prize money to go see Jerry Seinfeld at the Fox Theater.
 
