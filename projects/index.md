@@ -6,6 +6,8 @@ title: projects - home
 Projects
 ========
 
+[Bookshelf](bookshelf.html)
+
 [Ambient Info Bulb](ambient-info-bulb.html)
 
 [jack-o-LED](jack-o-LED.html)
