@@ -8,6 +8,8 @@ Projects
 
 I like to build things. Here are some things that I’ve built for various jobs and in my personal life.
 
+[MINT Amp](mint-amp.html)
+
 [Altoids USB Charger](altoids-ipod-charger.html)
 
 [Tater Gun](tater-gun.html)
