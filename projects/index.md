@@ -6,6 +6,8 @@ title: projects - home
 Projects
 ========
 
+[Ambient Info Bulb](ambient-info-bulb.html)
+
 [jack-o-LED](jack-o-LED.html)
 
 [MINT Amp](mint-amp.html)
