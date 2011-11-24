@@ -1,9 +1,9 @@
 ---
 layout: projects
-title: projects - Tater Gun
+title: projects - Altoids USB Charger
 ---
 
-Altoids iPod Charger
+Altoids USB Charger
 ====================
 
 ![usbhole](/images/usbhole.jpg)
