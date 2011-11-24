@@ -3,9 +3,6 @@ layout: projects
 title: projects - home
 ---
 
-Projects
-========
-
 [Bookshelf](bookshelf.html)
 
 [Ambient Info Bulb](ambient-info-bulb.html)
