@@ -6,7 +6,7 @@ title: projects - home
 Projects
 ========
 
-I like to build things. Here are some things that I’ve built for various jobs and in my personal life.
+[jack-o-LED](jack-o-LED.html)
 
 [MINT Amp](mint-amp.html)
 
