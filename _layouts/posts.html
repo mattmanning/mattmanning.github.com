@@ -6,11 +6,11 @@ layout: default
     <h1>
       <a href="{{ page.permalink }}">{{ page.title }}</a>
     </h1>
-  </header>
-  {{ content }}
-  <footer>
     <time datetime="{{ page.date | date: "%Y-%m-%d" }} pubdate">
       {{ page.date | date: "%B %d, %Y" }}
     </time>
+  </header>
+  {{ content }}
+  <footer>
   </footer>
 </article>
