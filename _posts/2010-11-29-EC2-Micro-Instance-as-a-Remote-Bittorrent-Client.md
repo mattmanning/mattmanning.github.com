@@ -116,3 +116,7 @@ Now you have a client that you can browse to at any time on any computer.  You c
 Amazon gets pretty decent download speeds too :)
 
 [<img src="/images/remotebt-speed.png" width="785" height="162" />](/images/remotebt-speed.png)
+
+<script type="text/javascript">
+  disqus_url = 'http://mwmanning.com/2010/11/29/ec2-micro-instance-as-a-remote-bittorrent-client/';
+</script>
