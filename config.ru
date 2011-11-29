@@ -1,3 +1,16 @@
-require 'rack/jekyll'
+require 'rack/contrib/try_static'
+require 'rack/rewrite'
 
-run Rack::Jekyll.new
+# Support links to old Wordpress site
+use Rack::Rewrite do
+  r301 '/2010/11/29/ec2-micro-instance-as-a-remote-bittorrent-client/', '/2010/11/29/EC2-Micro-Instance-as-a-Remote-Bittorrent-Client.html'
+  r301 '/2009/01/13/timemachine-ubuntu-nas/', '/2009/01/13/TimeMachine-Ubuntu-NAS.html'
+  r301 %r{/projects/(\S+)/}, '/projects/$1.html'
+end
+
+use Rack::TryStatic,
+    :root => "_site",
+    :urls => %w[/],
+    :try => ['.html', 'index.html', '/index.html']
+
+run lambda { [404, {'Content-Type' => 'text/html'}, ['Not Found']]}
