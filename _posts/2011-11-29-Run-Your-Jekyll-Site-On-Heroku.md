@@ -78,7 +78,7 @@ Next set up a config.ru file that looks like this:
     
     run Rack::Jekyll.new
 
-Finally, modify your Procfile to run the your new Rack app. With Thin, mine looks like this:
+Finally, modify your Procfile to run your new Rack app. With Thin, mine looks like this:
 
     web: bundle exec thin start -p $PORT -e $RACK_ENV
 
