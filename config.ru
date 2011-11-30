@@ -1,5 +1,13 @@
+require 'dalli'
+require 'rack/cache'
 require 'rack/contrib/try_static'
 require 'rack/rewrite'
+
+$cache = Dalli::Client.new
+use Rack::Cache,
+  :verbose => true,
+  :metastore => $cache,
+  :entitystore => $cache
 
 # Support links to old Wordpress site
 use Rack::Rewrite do
