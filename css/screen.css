@@ -155,6 +155,7 @@ pre {
   color: white;
   font-family: Monaco, monospace;
   margin-bottom: 18px;
+  overflow-x: auto;
 }
 
 article footer {
