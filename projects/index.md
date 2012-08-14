@@ -3,6 +3,8 @@ layout: projects
 title: projects - home
 ---
 
+[Heroku Buildpacks](http://blog.heroku.com/archives/2012/7/17/buildpacks/) blog post
+
 [Bookshelf](bookshelf.html)
 
 [Ambient Info Bulb](ambient-info-bulb.html)
