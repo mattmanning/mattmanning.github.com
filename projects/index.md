@@ -3,7 +3,7 @@ layout: projects
 title: projects - home
 ---
 
-[Heroku Buildpacks](http://blog.heroku.com/archives/2012/7/17/buildpacks/) blog post
+[Heroku Buildpacks blog post](http://blog.heroku.com/archives/2012/7/17/buildpacks/)
 
 [Bookshelf](bookshelf.html)
 
