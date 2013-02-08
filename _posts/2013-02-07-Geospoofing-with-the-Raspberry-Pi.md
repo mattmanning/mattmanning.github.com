@@ -11,7 +11,7 @@ This works great if you're spoofing on a general-purpose computing device that y
 
 The [Raspberry Pi](http://www.raspberrypi.org/faqs) is a credit-card sized, low power computer on a single board that costs about $35. It was originally designed to be a cheap computer for education, but it's seen a boom in the maker market, too. My friend, Mike, gave me one for Christmas, and it's been really fun to tinker with.
 
-The Raspberry Pi Foundation releases a special version of Debian Linux optimized for the Pi called [Raspbian](http://www.raspberrypi.org/faqs). A $35 Linux computer is hard to beat. Here's a step-by-step guide for how I turned my Raspberry Pi into a geospoofing VPN gateway.
+The Raspberry Pi Foundation releases a special version of Debian Linux optimized for the Pi called [Raspbian](http://www.raspbian.org/). A $35 Linux computer is hard to beat. Here's a step-by-step guide for how I turned my Raspberry Pi into a geospoofing VPN gateway.
 
 Setting up the Raspberry Pi
 ===========================
