@@ -14,7 +14,7 @@ The [Raspberry Pi](http://www.raspberrypi.org/faqs) is a credit-card sized, low 
 The Raspberry Pi Foundation releases a special version of Debian Linux optimized for the Pi called [Raspbian](http://www.raspbian.org/). A $35 Linux computer is hard to beat. Here's a step-by-step guide for how I turned my Raspberry Pi into a geospoofing VPN gateway.
 
 Setting up the Raspberry Pi
-===========================
+---------------------------
 
 First you need to start with a fresh install of Raspian "wheezy." You can download it [here](http://www.raspberrypi.org/downloads) and find a guide for writing the image to an SD card [here](http://elinux.org/RPi_Easy_SD_Card_Setup).
 
@@ -32,7 +32,7 @@ At some point you'll want to upgrade all the software on your Pi using the comma
 The upgrade command will take quite a while though, so you might want to kick it off at night before you go to bed or before you go to work in the morning. I don't have the kind of patience to sit around and wait for something like that to finish :)
 
 Installing and configuring OpenVPN
-==================================
+----------------------------------
 
 The next step is to install some VPN software. You can install OpenVPN with the following command:
 
@@ -61,7 +61,7 @@ Save this file, then restart OpenVPN with the command:
     sudo /etc/init.d/openvpn restart
 
 Configuring iptables
-====================
+--------------------
 
 Now that you have VPN software set up, the next step is to turn the Pi into a router. You can do this using the Linux utility, [`iptables`](http://wiki.debian.org/iptables). Download [this file](/share/iptables.test.rules) and save it on your Raspberry Pi as `/etc/iptables.test.rules`. Load its rules using the command:
 
@@ -85,7 +85,7 @@ Save the file and then make it executable:
     chmod +x /etc/network/if-pre-up.d/iptables
 
 Enable IP forwarding
-====================
+--------------------
 
 Finally, we need to enable IP forwarding by editing one more config file. Open up the file:
 
@@ -100,7 +100,7 @@ Now reboot your Raspberry Pi with the command:
     sudo reboot
 
 Testing
-=======
+-------
 
 If everything was done correctly, you should now be able to use the Raspberry Pi as a VPN gateway. On another computer on the same local network, visit [WhatIsMyIPAddress.com](http://whatismyipaddress.com/). Note your current IP address and physical location on the map.
 
@@ -117,7 +117,7 @@ If you're on Windows I think "Router" is called "Default Gateway". Now, reload W
 Now all you have to do is set the router (or gateway) on your closed devices like AppleTV and Xbox 360 to the Raspberry Pi's IP address and you can access content available only in your VPN's location.
 
 Using the gateway selectively
-=============================
+-----------------------------
 
 PrivateTunnel is priced relatively easily, but if you're doing things like streaming video, it's really easy to eat up your data transfer allotment very quickly. Luckily many services use only a single authentication request to determine your location. If you find this to be the case with your service, you can edit your OpenVPN configuration to only send requests to certain IP addresses through the VPN instead of all of them.
 
