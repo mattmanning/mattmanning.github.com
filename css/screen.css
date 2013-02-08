@@ -51,38 +51,38 @@ table {
 
 body {
   font-family: 'Lora', arial, serif;
-  font-size: 75%;
-  line-height: 18px;
-  width: 800px;
+  line-height: 24px;
+  width: 972px;
   margin: auto;
 /*  background: url('/images/gridbg.gif');*/
 }
 
 html>body {
-  font-size: 12px;
+  font-size: 18px;
 }
 
 h1 {
-  font-size: 32px;
-  line-height: 36px;
-  margin-bottom: 18px;
+  font-size: 42px;
+  line-height: 48px;
+  margin-bottom: 24px;
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 28px;
   line-height: 36px;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 
 h3 {
   font-size: 18px;
-  line-height: 18px;
-  margin-bottom: 18px;
+  line-height: 24px;
+  margin-bottom: 24px;
+  font-weight: bold;
 }
 
 p {
-  font-size: 12px;
-  margin-bottom: 18px;
+  font-size: 16px;
+  margin-bottom: 24px;
 }
 
 a {
@@ -98,11 +98,12 @@ header {
   position: relative;
   height: 51px;
   border-bottom: 3px double #ccc;
-  margin-bottom: 18px; 
+  margin-bottom: 24px;
 }
 
 header h1 {
-  font-size: 16px;
+  line-height: 36px;
+  font-size: 18px;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -115,7 +116,7 @@ nav {
   right: 0;
   bottom: 0px;
   line-height: 36px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 div#content {
@@ -132,7 +133,7 @@ article header h1 {
   position: static;
   bottom: auto;
   left: auto;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
   padding-bottom: auto;
   line-height: 36px;
   font-size: 32px;
@@ -150,11 +151,12 @@ article img {
 }
 
 pre {
-  padding: 18px;
+  padding: 8px 12px 8px 12px;
   background-color: #444;
   color: white;
   font-family: Monaco, monospace;
-  margin-bottom: 18px;
+  font-size: 14px;
+  margin-bottom: 24px;
   overflow-x: auto;
 }
 
@@ -163,12 +165,12 @@ article footer {
   border-top: none;
   height: auto;
   text-align: left;
-  line-height: 18px;
+  line-height: 24px;
 }
 
 article time {
-  line-height: 18px;
-  margin-bottom: 18px;
+  line-height: 24px;
+  margin-bottom: 24px;
   font-style: italic;
   color: #888;
 }
@@ -183,10 +185,10 @@ div#contact p {
 }
 
 footer {
-  margin-top: 18px;
+  margin-top: 24px;
   border-top: 3px double #ccc;
   height: 51px;
   text-align: center;
   line-height: 36px;
-  font-size: 12px;
+  font-size: 14px;
 }
