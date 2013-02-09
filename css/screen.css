@@ -54,7 +54,7 @@ body {
   line-height: 24px;
   width: 972px;
   margin: auto;
-/*  background: url('/images/gridbg.gif');*/
+/*  background: url('/images/gridbg.png');*/
 }
 
 html>body {
@@ -68,8 +68,8 @@ h1 {
 }
 
 h2 {
-  font-size: 28px;
-  line-height: 36px;
+  font-size: 24px;
+  line-height: 24px;
   margin-bottom: 24px;
 }
 
@@ -96,7 +96,7 @@ a:hover {
 
 header {
   position: relative;
-  height: 51px;
+  height: 69px;
   border-bottom: 3px double #ccc;
   margin-bottom: 24px;
 }
@@ -125,7 +125,7 @@ div#content {
 
 article header {
   position: static;
-  height: 72px;
+  height: 96px;
   border: none;
 }
 
@@ -135,7 +135,7 @@ article header h1 {
   left: auto;
   margin-bottom: 24px;
   padding-bottom: auto;
-  line-height: 36px;
+  line-height: 48px;
   font-size: 32px;
 }
 
@@ -187,8 +187,8 @@ div#contact p {
 footer {
   margin-top: 24px;
   border-top: 3px double #ccc;
-  height: 51px;
+  height: 45px;
   text-align: center;
   line-height: 36px;
-  font-size: 14px;
+  font-size: 16px;
 }
