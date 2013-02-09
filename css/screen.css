@@ -179,9 +179,10 @@ div#contact {
   text-align: center;
 }
 
-div#contact p {
-  margin: 18px;
-  font-size: 18px;
+#google-voice-widget {
+  width: 230px;
+  height: 85px;
+  line-height: 96;
 }
 
 footer {
