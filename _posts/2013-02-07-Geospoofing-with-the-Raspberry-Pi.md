@@ -84,7 +84,7 @@ Make it executable:
 
     sudo chmod +x /etc/network/if-pre-up.d/iptables
 
-Enable IP forwarding
+Enabling IP forwarding
 --------------------
 
 Finally, we need to enable IP forwarding by editing one more config file. Open up the file:
