@@ -82,7 +82,7 @@ and add these lines to it:
 
 Make it executable:
 
-    chmod +x /etc/network/if-pre-up.d/iptables
+    sudo chmod +x /etc/network/if-pre-up.d/iptables
 
 Enable IP forwarding
 --------------------
