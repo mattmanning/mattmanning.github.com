@@ -7,7 +7,7 @@ Many online services vary the content available to you based on your geographic 
 
 The good news is, we can circumvent these unfair practices with technology in a rather straightforward way using a virtual private network (VPN). Many people are already familiar with VPN technology. It's used heavily in the corporate world to provide secure remote access to a local network. A side effect of VPN usage is that outbound requests appear to originate from the VPN's IP address, rather than your own. You can use this to your advantage to "geospoof" your physical location.
 
-This works great if you're spoofing on a general-purpose computing device that you control like a laptop. You can just fire up your VPN client and go to town. But what if you want to use something closed, like an AppleTV, game console, or network-connected TV? These devices won't let you install arbitrary software like a VPN client or let you have too much control over networking. Enter the Raspberry Pi.
+This works great if you're spoofing on a general-purpose computing device that you control like a laptop. You can just fire up your VPN client and go to town. But what if you want to use something closed, like an AppleTV, game console, or network-connected TV? These devices won't let you install arbitrary software like a VPN client or let you have too much control over networking. What you need is a router on your local network that can forward traffic from these devices through a VPN. You could do this using by putting open source firmware like [TomatoUSB](http://tomatousb.org/) or [ddwrt](http://www.dd-wrt.com/site/index) onto a hardware router, but I wanted to leave my Airport Extreme router alone, so I decided to use a Raspberry Pi.
 
 ![Raspberry Pi](/images/RaspberryPi.jpeg)
 
@@ -149,4 +149,4 @@ I learned all the stuff to write this post from:
 
 - [RPI as VPN gateway](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=36&t=19350)
 - [iptables - Debian Wiki](http://wiki.debian.org/iptables)
-- Bugging smart guy Blake Gentry via email
+- Bugging smart guy [Blake Gentry](https://github.com/bgentry) via email
