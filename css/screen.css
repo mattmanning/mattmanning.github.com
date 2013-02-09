@@ -150,6 +150,15 @@ article img {
   vertical-align: middle;
 }
 
+article ul {
+  list-style: circle inside;
+  font-size: 16px;
+}
+
+article ul a {
+  color: blue;
+}
+
 pre {
   padding: 7px;
   background-color: #444;

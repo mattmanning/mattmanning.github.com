@@ -24,6 +24,8 @@ The first time you boot the computer, you'll be taken to the configuration tool,
 
 Since you'll be using this computer as a network device, you'll want to change the default password here for security reasons. Turning on the ssh server is also necessary unless you intend to keep the Pi hooked up to a monitor, keyboard, and mouse permanently.
 
+Next, [give your Raspberry Pi a static IP address](http://www.raspberrypi-tutorials.co.uk/raspberry-pi-static-ip-address/) outside your router's DHCP range. You're going to need a static IP address to set as the gateway when you configure the other devices on your local network.
+
 At some point you'll want to upgrade all the software on your Pi using the commands:
 
     sudo apt-get update
@@ -141,3 +143,12 @@ Now restart OpenVPN
     sudo /etc/init.d/openvpn restart
 
 In this example, I've used the IP address of another IP address checking site, [myipaddress.com](http://myipaddress.com). If you've set everything up correctly, you should be able to reload WhatIsMyIPAddress.com and see your actual IP address, but load myipaddress.com and see the VPN's IP address. Once you get this working, you can use the route command to send requests to any IP addresses you want through the VPN!
+
+Credits
+-------
+
+I learned all the stuff to write this post from:
+
+- [RPI as VPN gateway](http://www.raspberrypi.org/phpBB3/viewtopic.php?f=36&t=19350)
+- [iptables - Debian Wiki](http://wiki.debian.org/iptables)
+- Bugging smart guy Blake Gentry via email
