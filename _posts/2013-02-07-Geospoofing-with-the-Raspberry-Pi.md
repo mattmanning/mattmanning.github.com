@@ -3,7 +3,7 @@ layout: posts
 title: Geospoofing with the Raspberry Pi
 ---
 
-Many online services, especially media services, use IP addresses to determine your physical location and then use that information to determine the level or type of service you can get. For example, Netflix offers different movies to those outside of the United States and professional sports streaming services enforce regional blackouts to protect TV contracts. These types of practices violate the spirit of the free and open Internet. Unfortunately, they are legal, since the U.S. government has never passed comprehensive net neutrality legislation.
+Many online services, especially media services, use IP addresses to determine your physical location and then use that information to determine the level or type of service you can get. For example, movie streaming services offer different movies to those outside of the United States and professional sports streaming services enforce regional blackouts to protect TV contracts. These types of practices violate the spirit of the free and open Internet. Unfortunately, they are legal, since the U.S. government has never passed comprehensive net neutrality legislation.
 
 The good news is, we can circumvent these unfair practices with technology in a rather straightforward way using a virtual private network (VPN). Many people are already familiar with VPN technology as it is used heavily in the corporate world to provide secure external access to a local network without opening up that network to everyone on the public Internet. A side effect of VPN usage is that requests appear to originate from the private network's IP address, rather than your own. You can use this to your advantage to "geospoof" your physical location.
 
