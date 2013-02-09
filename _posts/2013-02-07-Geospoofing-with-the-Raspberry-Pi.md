@@ -26,7 +26,7 @@ Since you'll be using this computer as a network device, you should change the d
 
 Next, [give your Raspberry Pi a static IP address](http://www.raspberrypi-tutorials.co.uk/raspberry-pi-static-ip-address/) outside your router's DHCP range. You'll use this address as the router or gateway when you configure the other devices on your local network.
 
-At some point you'll want to upgrade all the software on your Pi using the commands:
+It's a good idea to upgrade all the software on your Pi using the commands:
 
     sudo apt-get update
     sudo apt-get upgrade
@@ -42,7 +42,7 @@ The next step is to install some VPN software. You can install OpenVPN with the 
 
 Now you'll want to get access to a VPN server in a geographically beneficial area. I've had good results with [PrivateTunnel](https://www.privatetunnel.com). The service is inexpensive, and they have servers in San Jose, Chicago, London, Zurich, and Montreal. Once you choose a server location you can download its related configuration file. Save this file on the Raspberry Pi as `/etc/openvpn/server.conf`.
 
-You'll want to make a couple of edits to this file. So open it with `nano`:
+It's necessary to make a couple of edits to this file. So open it with `nano`:
 
     sudo nano /etc/openvpn/server.conf
 
