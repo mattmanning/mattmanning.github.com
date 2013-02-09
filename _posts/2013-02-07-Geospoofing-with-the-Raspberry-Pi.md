@@ -3,15 +3,15 @@ layout: posts
 title: Geospoofing with the Raspberry Pi
 ---
 
-Many online services, especially media services, use IP addresses to determine your physical location and then use that information to determine the level or type of service you can get. For example, movie streaming services offer different movies to those outside of the United States and professional sports streaming services enforce regional blackouts to protect TV contracts. These types of practices violate the spirit of the free and open Internet. Unfortunately, they are legal, since the U.S. government has never passed comprehensive net neutrality legislation.
+Many online services vary the content available to you based on your geographic location, which they detect using your IP address. For example, some movie streaming services offer different movies to users outside of the United States, and sports streaming services enforce regional blackouts to protect TV contracts. These types of practices violate the spirit of the free and open Internet.
 
-The good news is, we can circumvent these unfair practices with technology in a rather straightforward way using a virtual private network (VPN). Many people are already familiar with VPN technology as it is used heavily in the corporate world to provide secure external access to a local network without opening up that network to everyone on the public Internet. A side effect of VPN usage is that requests appear to originate from the private network's IP address, rather than your own. You can use this to your advantage to "geospoof" your physical location.
+The good news is, we can circumvent these unfair practices with technology in a rather straightforward way using a virtual private network (VPN). Many people are already familiar with VPN technology. It's used heavily in the corporate world to provide secure remote access to a local network. A side effect of VPN usage is that outbound requests appear to originate from the VPN's IP address, rather than your own. You can use this to your advantage to "geospoof" your physical location.
 
-This works great if you're spoofing on a general-purpose computing device that you control like a laptop, but what if you want to use something closed, like an AppleTV, game console, or network-connected TV? In this case, things get much more tricky. In most cases these devices won't let you install arbitrary software like a VPN client or let you have too much control over networking. Enter the Raspberry Pi.
+This works great if you're spoofing on a general-purpose computing device that you control like a laptop. You can just fire up your VPN client and go to town. But what if you want to use something closed, like an AppleTV, game console, or network-connected TV? These devices won't let you install arbitrary software like a VPN client or let you have too much control over networking. Enter the Raspberry Pi.
 
-The [Raspberry Pi](http://www.raspberrypi.org/faqs) is a credit-card sized, low power computer on a single board that costs about $35. It was originally designed to be a cheap computer for education, but it's seen a boom in the maker market, too. My friend, Mike, gave me one for Christmas, and it's been really fun to tinker with.
+The [Raspberry Pi](http://www.raspberrypi.org/faqs) is a credit-card sized, low power computer on a single board that costs about $35. It was originally designed to be a cheap computer for education, but it's seen a boom in the maker market, too. My friend, [Mike](http://www.youtube.com/watch?v=Kh2AWswAMvw), gave me one for Christmas, and it's been really fun to tinker with.
 
-The Raspberry Pi Foundation releases a special version of Debian Linux optimized for the Pi called [Raspbian](http://www.raspbian.org/). A $35 Linux computer is hard to beat. Here's a step-by-step guide for how I turned my Raspberry Pi into a geospoofing VPN gateway.
+The Raspberry Pi Foundation releases a special version of Debian Linux optimized for the Pi called [Raspbian](http://www.raspbian.org/). A $35 Linux computer is hard to beat, and it can be turned into a geospoofing VPN gateway on your local network pretty easily. Here's a step-by-step guide.
 
 Setting up the Raspberry Pi
 ---------------------------
@@ -22,9 +22,9 @@ The first time you boot the computer, you'll be taken to the configuration tool,
 
 ![raspi-config menu screen](/images/raspi-config.png)
 
-Since you'll be using this computer as a network device, you'll want to change the default password here for security reasons. Turning on the ssh server is also necessary unless you intend to keep the Pi hooked up to a monitor, keyboard, and mouse permanently.
+Since you'll be using this computer as a network device, you should change the default password for security reasons. Turning on the ssh server is also necessary unless you intend to keep the Pi hooked up to a monitor, keyboard, and mouse.
 
-Next, [give your Raspberry Pi a static IP address](http://www.raspberrypi-tutorials.co.uk/raspberry-pi-static-ip-address/) outside your router's DHCP range. You're going to need a static IP address to set as the gateway when you configure the other devices on your local network.
+Next, [give your Raspberry Pi a static IP address](http://www.raspberrypi-tutorials.co.uk/raspberry-pi-static-ip-address/) outside your router's DHCP range. You'll use this address as the router or gateway when you configure the other devices on your local network.
 
 At some point you'll want to upgrade all the software on your Pi using the commands:
 
@@ -40,7 +40,7 @@ The next step is to install some VPN software. You can install OpenVPN with the 
 
     sudo apt-get install openvpn
 
-Now you'll want to get access to a VPN server in a geographically beneficial area. I've had good results with [PrivateTunnel](https://www.privatetunnel.com). They're cheap, and they have servers in San Jose, Chicago, London, Zurich, and Montreal. Once you choose a server location, you can download its related configuration file. Copy this file to the Raspberry Pi, and save it as `/etc/openvpn/server.conf`.
+Now you'll want to get access to a VPN server in a geographically beneficial area. I've had good results with [PrivateTunnel](https://www.privatetunnel.com). The service is inexpensive, and they have servers in San Jose, Chicago, London, Zurich, and Montreal. Once you choose a server location you can download its related configuration file. Save this file on the Raspberry Pi as `/etc/openvpn/server.conf`.
 
 You'll want to make a couple of edits to this file. So open it with `nano`:
 
@@ -58,10 +58,6 @@ to:
 
     dev tun0
 
-Save this file, then restart OpenVPN with the command:
-
-    sudo /etc/init.d/openvpn restart
-
 Configuring iptables
 --------------------
 
@@ -69,11 +65,11 @@ Now that you have VPN software set up, the next step is to turn the Pi into a ro
 
     sudo iptables-restore < /etc/iptables.test.rules
 
-This is the way you usually test iptables rules. We know that these work, so go ahead and save them into your permanent config file with the command:
+Normally you would now test the functionality of your iptables rules. We know that these work, so go ahead and save them into your permanent config file with the command:
 
     sudo iptables-save > /etc/iptables.up.rules
 
-We want these rules to be loaded every time the Pi boots, so create a new file:
+You want these rules to be loaded every time the Pi boots, so create a new file:
 
     sudo nano /etc/network/if-pre-up.d/iptables
 
@@ -82,7 +78,7 @@ and add these lines to it:
     #!/bin/bash
     /sbin/iptables-restore < /etc/iptables.up.rules
 
-Save the file and then make it executable:
+Make it executable:
 
     chmod +x /etc/network/if-pre-up.d/iptables
 
@@ -104,24 +100,24 @@ Now reboot your Raspberry Pi with the command:
 Testing
 -------
 
-If everything was done correctly, you should now be able to use the Raspberry Pi as a VPN gateway. On another computer on the same local network, visit [WhatIsMyIPAddress.com](http://whatismyipaddress.com/). Note your current IP address and physical location on the map.
+If everything was done correctly, you should now be able to use the Raspberry Pi as a VPN gateway. On a computer connected to the same local network as the Pi, visit [WhatIsMyIPAddress.com](http://whatismyipaddress.com/). Note your current IP address and physical location on the map.
 
-Now, change your computer's router to be the Raspberry Pi's IP address on the local network. If you don't know it's address, you can find it by running the command:
+Now, change your computer's router to the Raspberry Pi's IP address. If you don't know it's address, you can find it by running the command:
 
     ifconfig
 
-on the Pi. I'm on a Mac and my Pi's IP address is 10.0.1.22, so my network config looks like this:
+on the Pi. I'm on a Mac and my Pi's IP address is 10.0.1.202, so my network config looks like this:
 
 ![Network Preferences](/images/network-config.png)
 
-If you're on Windows I think "Router" is called "Default Gateway". Now, reload WhatIsMyIPAddress in your browser. You should now see the IP address of your VPN and its location reflected on the map. You're geospoofing!
+If you're on Windows I think "Router" is called "Default Gateway". Now, reload WhatIsMyIPAddress. You should now see the IP address of your VPN and its location reflected on the map. Congratulations! You're geospoofing!
 
 Now all you have to do is set the router (or gateway) on your closed devices like AppleTV and Xbox 360 to the Raspberry Pi's IP address and you can access content available only in your VPN's location.
 
 Using the gateway selectively
 -----------------------------
 
-PrivateTunnel is priced relatively easily, but if you're doing things like streaming video, it's really easy to eat up your data transfer allotment very quickly. Luckily many services use only a single authentication request to determine your location. If you find this to be the case with your service, you can edit your OpenVPN configuration to only send requests to certain IP addresses through the VPN instead of all of them.
+PrivateTunnel is reasonably priced, but if you're doing things like streaming video, it's really easy to eat up your data transfer allotment very quickly. Luckily many services use only a single authentication request to determine your location. If you find this to be the case with your service, you can configure OpenVPN to send requests through the VPN only to certain IP addresses.
 
 To do that, open up the config file:
 
