@@ -9,6 +9,8 @@ The good news is, we can circumvent these unfair practices with technology in a 
 
 This works great if you're spoofing on a general-purpose computing device that you control like a laptop. You can just fire up your VPN client and go to town. But what if you want to use something closed, like an AppleTV, game console, or network-connected TV? These devices won't let you install arbitrary software like a VPN client or let you have too much control over networking. Enter the Raspberry Pi.
 
+![Raspberry Pi](/images/RaspberryPi.jpeg)
+
 The [Raspberry Pi](http://www.raspberrypi.org/faqs) is a credit-card sized, low power computer on a single board that costs about $35. It was originally designed to be a cheap computer for education, but it's seen a boom in the maker market, too. My friend, [Mike](http://www.youtube.com/watch?v=Kh2AWswAMvw), gave me one for Christmas, and it's been really fun to tinker with.
 
 The Raspberry Pi Foundation releases a special version of Debian Linux optimized for the Pi called [Raspbian](http://www.raspbian.org/). A $35 Linux computer is hard to beat, and it can be turned into a geospoofing VPN gateway on your local network pretty easily. Here's a step-by-step guide.
