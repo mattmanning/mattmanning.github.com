@@ -151,13 +151,14 @@ article img {
 }
 
 pre {
-  padding: 8px 12px 8px 12px;
+  padding: 7px;
   background-color: #444;
   color: white;
   font-family: Monaco, monospace;
   font-size: 14px;
   margin-bottom: 24px;
   overflow-x: auto;
+  border: 5px ridge;
 }
 
 article footer {
