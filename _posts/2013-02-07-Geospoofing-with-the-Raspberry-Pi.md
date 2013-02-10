@@ -3,28 +3,30 @@ layout: posts
 title: Geospoofing with the Raspberry Pi
 ---
 
-Many online services vary the content available to you based on your geographic location, which they detect using your IP address. For example, some movie streaming services offer different movies to users outside of the United States, and sports streaming services enforce regional blackouts to protect TV contracts. These types of practices violate the spirit of the free and open Internet.
+Many online services alter their content availability based on your geographic location, which they detect using your IP address. For example, some movie streaming services offer different movies to users outside of the United States, and live sports streaming services enforce regional blackouts to protect TV contracts. These types of practices violate the spirit of the free and open Internet.
 
-The good news is, we can circumvent these unfair practices with technology in a rather straightforward way using a virtual private network (VPN). Many people are already familiar with VPN technology. It's used heavily in the corporate world to provide secure remote access to a local network. A side effect of VPN usage is that outbound requests appear to originate from the VPN's IP address, rather than your own. You can use this to your advantage to "geospoof" your physical location.
+The good news is that you can circumvent these unfair practices using a [virtual private network](http://en.wikipedia.org/wiki/Vpn) (VPN). VPN technology is used heavily in the corporate world to provide secure remote access to a local networks. A side effect of VPN usage is that outbound requests appear to originate from the VPN's IP address, rather than your own, and you can use this to your advantage to "geospoof" your physical location.
 
-This works great if you're spoofing on a general-purpose computing device that you control like a laptop. You can just fire up your VPN client and go to town. But what if you want to use something closed, like an AppleTV, game console, or network-connected TV? These devices won't let you install arbitrary software like a VPN client or let you have too much control over networking. What you need is a router on your local network that can forward traffic from these devices through a VPN. You could do this using by putting open source firmware like [TomatoUSB](http://tomatousb.org/) or [ddwrt](http://www.dd-wrt.com/site/index) onto a hardware router, but I wanted to leave my Airport Extreme router alone, so I decided to use a Raspberry Pi.
+This works great if you're spoofing on a general-purpose computing device like a laptop. You can just fire up your VPN client and go to town. But what if you want to connect a closed device, like an AppleTV, a game console, or a network-connected TV to a VPN? These devices won't let you install arbitrary software like a VPN client or let you have too much control over networking. 
+
+What you need is a router on your local network that can forward traffic from these devices through a VPN. You could do this by installing open source firmware like [TomatoUSB](http://tomatousb.org/) or [ddwrt](http://www.dd-wrt.com/site/index) onto a hardware router, but that process can be tedious, and good hardware routers tend to be a bit pricey. I wanted something easy and inexpensive. Enter the Raspberry Pi.
 
 ![Raspberry Pi](/images/RaspberryPi.jpeg)
 
 The [Raspberry Pi](http://www.raspberrypi.org/faqs) is a credit-card sized, low power computer on a single board that costs about $35. It was originally designed to be a cheap computer for education, but it's seen a boom in the maker market, too. My friend, [Mike](http://www.youtube.com/watch?v=Kh2AWswAMvw), gave me one for Christmas, and it's been really fun to tinker with.
 
-The Raspberry Pi Foundation releases a special version of Debian Linux optimized for the Pi called [Raspbian](http://www.raspbian.org/). A $35 Linux computer is hard to beat, and it can be turned into a geospoofing VPN gateway on your local network pretty easily. Here's a step-by-step guide.
+The Raspberry Pi Foundation releases a special version of Debian Linux called [Raspbian](http://www.raspbian.org/) which is optimized for the Raspberry Pi. A $35 Linux computer is hard to beat, and it can be turned into a geospoofing VPN gateway on your local network pretty easily. Here's a step-by-step guide.
 
 Setting up the Raspberry Pi
 ---------------------------
 
-First you need to start with a fresh install of Raspian "wheezy." You can download it [here](http://www.raspberrypi.org/downloads) and find a guide for writing the image to an SD card [here](http://elinux.org/RPi_Easy_SD_Card_Setup).
+First you need to start with a fresh install of Raspian. You can download it [here](http://www.raspberrypi.org/downloads) and find a guide for writing the image to an SD card [here](http://elinux.org/RPi_Easy_SD_Card_Setup).
 
-The first time you boot the computer, you'll be taken to the configuration tool, raspi-config. It looks something like this.
+The first time you boot the computer, you'll be taken to the configuration tool, `raspi-config`. It looks something like this:
 
 ![raspi-config menu screen](/images/raspi-config.png)
 
-Since you'll be using this computer as a network device, you should change the default password for security reasons. Turning on the ssh server is also necessary unless you intend to keep the Pi hooked up to a monitor, keyboard, and mouse.
+Since you'll be using this computer as a networking device, you should change the default password for security reasons. Turning on the SSH server is also necessary unless you intend to keep the Pi hooked up to a monitor, keyboard, and mouse.
 
 Next, [give your Raspberry Pi a static IP address](http://www.raspberrypi-tutorials.co.uk/raspberry-pi-static-ip-address/) outside your router's DHCP range. You'll use this address as the router or gateway when you configure the other devices on your local network.
 
@@ -33,12 +35,12 @@ It's a good idea to upgrade all the software on your Pi using the commands:
     sudo apt-get update
     sudo apt-get upgrade
 
-The upgrade command will take quite a while though, so you might want to kick it off at night before you go to bed or before you go to work in the morning. I don't have the kind of patience to sit around and wait for something like that to finish :)
+The upgrade command will take quite a while to complete, so you might want to kick it off at night before you go to bed or before you go to work in the morning.
 
 Installing and configuring OpenVPN
 ----------------------------------
 
-The next step is to install some VPN software. You can install OpenVPN with the following command:
+The next step is to install a VPN client. You can install OpenVPN with the following command:
 
     sudo apt-get install openvpn
 
@@ -104,7 +106,7 @@ Testing
 
 If everything was done correctly, you should now be able to use the Raspberry Pi as a VPN gateway. On a computer connected to the same local network as the Pi, visit [WhatIsMyIPAddress.com](http://whatismyipaddress.com/). Note your current IP address and physical location on the map.
 
-Now, change your computer's router to the Raspberry Pi's IP address. If you don't know it's address, you can find it by running the command:
+Now, change your computer's router to the Raspberry Pi's IP address. If you don't know its address, you can find it by running the command:
 
     ifconfig
 
@@ -112,14 +114,18 @@ on the Pi. I'm on a Mac and my Pi's IP address is 10.0.1.202, so my network conf
 
 ![Network Preferences](/images/network-config.png)
 
-If you're on Windows I think "Router" is called "Default Gateway". Now, reload WhatIsMyIPAddress. You should now see the IP address of your VPN and its location reflected on the map. Congratulations! You're geospoofing!
+If you're on Windows I think "Router" is called "Default Gateway". Now, reload WhatIsMyIPAddress, and you should see the IP address of your VPN and its location reflected on the map. Congratulations! You're geospoofing!
 
 Now all you have to do is set the router (or gateway) on your closed devices like AppleTV and Xbox 360 to the Raspberry Pi's IP address and you can access content available only in your VPN's location.
+
+This is what my AppleTV config looked like after setting it to use the Pi as a router:
+
+![Apple TV Network Config](/images/apple-tv.png)
 
 Using the gateway selectively
 -----------------------------
 
-PrivateTunnel is reasonably priced, but if you're doing things like streaming video, it's really easy to eat up your data transfer allotment very quickly. Luckily many services use only a single authentication request to determine your location. If you find this to be the case with your service, you can configure OpenVPN to send requests through the VPN only to certain IP addresses.
+PrivateTunnel is reasonably priced, but if you're streaming video, it's easy to use up your data transfer allotment very quickly. Luckily, many services use only a single authentication request to determine your location. If you find this to be the case with your service, you can configure OpenVPN to send requests through the VPN only to certain IP addresses.
 
 To do that, open up the config file:
 
@@ -136,7 +142,7 @@ and right below it add these lines:
     # Route authentication IP through VPN:
     route 184.72.247.194 255.255.255.255
 
-Now restart OpenVPN
+Now restart OpenVPN:
 
     sudo /etc/init.d/openvpn restart
 
