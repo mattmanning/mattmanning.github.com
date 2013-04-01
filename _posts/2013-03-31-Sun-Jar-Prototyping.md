@@ -55,7 +55,7 @@ Lithium ion batteries are really sensitive to overcharging, and you can easily r
 Making the first real prototype
 -------------------------------
 
-With a working circuit and a smaller battery I next built the actual prototype sun jar. Most commercial sun jars put the solar panel underneath a hinged glass lid. Since I had weatherproof solar panels that could go on the outside of a jar, I decided to go for a slightly different look, and I ordered these [8-ounce Ball Jars](https://www.sparkfun.com/products/10495) from Amazon.
+With a working circuit and a smaller battery I next built the actual prototype sun jar. Most commercial sun jars put the solar panel underneath a hinged glass lid. Since I had weatherproof solar panels that could go on the outside of a jar, I decided to go for a slightly different look, and I ordered these [8-ounce Ball Jars](http://www.amazon.com/gp/product/B008586UJY/ref=oh_details_o04_s00_i00?ie=UTF8&psc=1) from Amazon.
 
 ![jar](https://lh6.googleusercontent.com/-vBlMKgWrqxI/UVjdu70DGHI/AAAAAAAATGE/-DhXuIj5DFk/s500/url.jpeg)
 
