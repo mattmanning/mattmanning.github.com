@@ -1,5 +1,5 @@
 safe:        false
-port: 4000
+port:        4000
 base-url:    /
 
 source:      .
@@ -12,13 +12,6 @@ highlighter: pygments
 markdown:    kramdown
 permalink:   date
 
-maruku:
-  use_tex:    false
-  use_divs:   false
-  png_engine: blahtex
-  png_dir:    ixmages/latex
-  png_url:    /images/late
-
 rdiscount:
   extensions: []
 
@@ -29,12 +22,12 @@ kramdown:
   toc_levels: 1..6
   enable_coderay: false
 
-  coderay:
-    coderay_wrap: div
-    coderay_line_numbers: inline
-    coderay_line_numbers_start: 1
-    coderay_tab_width: 4
-    coderay_bold_every: 10
-    coderay_css: style
+  syntax_highlighter_opts:
+    wrap: div
+    line_numbers: inline
+    line_numbers_start: 1
+    tab_width: 4
+    bold_every: 10
+    css: style
 
 exclude: [ Gemfile, Gemfile.lock, Procfile, vendor ]
